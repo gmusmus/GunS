@@ -1,7 +1,7 @@
 from constants import *
 import random
 import pygame
-from random import choice
+# from random import choice
 
 def rnd(start, end):
     return random.randint(start, end)

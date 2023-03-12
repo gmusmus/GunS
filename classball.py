@@ -1,6 +1,6 @@
 import math
 from random import choice
-import random
+# import random
 import pygame
 from constants import *
 import classgun

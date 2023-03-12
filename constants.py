@@ -1,5 +1,4 @@
 from ctypes import *
-
 FPS = 30
 RED = 0xFF0000
 BLUE = 0x0000FF

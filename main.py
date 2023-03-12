@@ -1,18 +1,15 @@
-import math
-from random import choice
-import random
+# import math
+# from random import choice
+# import random
 import pygame
-import constants
+from constants import *
 
-import classball
+# import classball
 import classgun
 import classtarget
 
-#global balls, bullet
-#bullet = 0
-
 pygame.init()
-screen = pygame.display.set_mode((constants.WIDTH, constants.HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 classgun.bullet = 0
 classgun.balls = []
 
@@ -22,14 +19,14 @@ target = classtarget.Target(screen)
 finished = False
 
 while not finished:
-    screen.fill(constants.WHITE)
+    screen.fill(WHITE)
     gun.draw()
     target.draw()
     for b in classgun.balls:
         b.draw()
     pygame.display.update()
 
-    clock.tick(constants.FPS)
+    clock.tick(FPS)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finished = True
@@ -39,6 +36,11 @@ while not finished:
             gun.fire2_end(event)
         elif event.type == pygame.MOUSEMOTION:
             gun.targetting(event)
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_a:
+                gun.stepleft()
+            elif event.key == pygame.K_d:
+                gun.stepright()
 
     for b in classgun.balls:
         b.move()

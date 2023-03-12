@@ -1,6 +1,6 @@
 import math
-from random import choice
-import random
+# from random import choice
+# import random
 import pygame
 from constants import *
 import classball
@@ -16,6 +16,10 @@ class Gun:
         self.f2_on = 0
         self.an = 1
         self.color = GREY
+        self.x0 = 20 # Положение пушки по координате x
+        self.y0 = 450 # Положение пушки по координате y
+        self.calibr = 7 # Ширина ствола
+        self.d_stvol = 20 # Длина ствола
 
     def fire2_start(self, event):
         self.f2_on = 1
@@ -40,14 +44,15 @@ class Gun:
     def targetting(self, event):
         """Прицеливание. Зависит от положения мыши."""
         if event:
-            self.an = math.atan((event.pos[1]-450) / (event.pos[0]-20))
+            self.an = math.atan((event.pos[1]-self.y0) / (event.pos[0]-self.x0))
         if self.f2_on:
             self.color = RED
         else:
             self.color = GREY
 
     def draw(self):
-        pygame.draw.line(self.screen, self.color, (20, 450), (int(20 + max(self.f2_power, 20) * math.cos(self.an)), int(450 + max(self.f2_power, 20) * math.sin(self.an))), 7)
+        pygame.draw.line(self.screen, self.color, (self.x0, self.y0 ), (int(self.x0 + max(self.f2_power, self.d_stvol) *
+            math.cos(self.an)), int(self.y0  + max(self.f2_power, self.d_stvol) * math.sin(self.an))), self.calibr)
 
     def power_up(self):
         if self.f2_on:
@@ -56,3 +61,11 @@ class Gun:
             self.color = RED
         else:
             self.color = GREY
+    def stepleft(self):
+        if self.x0 > 5:
+            self.x0 -= 5
+            self.draw()
+    def stepright(self):
+        if self.x0 <55:
+            self.x0 += 5
+            self.draw()
