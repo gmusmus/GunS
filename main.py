@@ -11,11 +11,6 @@ import classtarget
 #global balls, bullet
 #bullet = 0
 
-def rnd(start, end):
-    return random.randint(start, end)
-
-
-
 pygame.init()
 screen = pygame.display.set_mode((constants.WIDTH, constants.HEIGHT))
 classgun.bullet = 0
@@ -23,7 +18,7 @@ classgun.balls = []
 
 clock = pygame.time.Clock()
 gun = classgun.Gun(screen)
-target = classtarget.Target()
+target = classtarget.Target(screen)
 finished = False
 
 while not finished:

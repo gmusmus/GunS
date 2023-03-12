@@ -1,5 +1,13 @@
+from constants import *
+import random
+import pygame
+from random import choice
+
+def rnd(start, end):
+    return random.randint(start, end)
+
 class Target:
-    def __init__(self):
+    def __init__(self, screen: pygame.Surface, x=40, y=450):
         self.points = 0
         self.live = 1
         self.new_target()
@@ -7,7 +15,7 @@ class Target:
         self.x = random.randint(50, 750)
         self.y = random.randint(50, 550)
         self.radius = random.randint(20, 40)
-        self.color = constants.RED
+        self.color = RED
 
     def new_target(self):
         """ Инициализация новой цели. """
