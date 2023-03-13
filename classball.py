@@ -7,7 +7,7 @@ import classgun
 
 
 class Ball:
-    def __init__(self, screen: pygame.Surface, x=40, y=450):
+    def __init__(self, screen: pygame.Surface, x, y):
         """ Конструктор класса ball
 
         Args:
