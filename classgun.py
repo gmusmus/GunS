@@ -32,7 +32,7 @@ class Gun:
         """
         global balls, bullet
         bullet += 1
-        new_ball = classball.Ball(self.screen)
+        new_ball = classball.Ball(self.screen, self.x0, self.y0)
         new_ball.r += 5
         self.an = math.atan2((event.pos[1]-new_ball.y), (event.pos[0]-new_ball.x))
         new_ball.vx = self.f2_power * math.cos(self.an)
